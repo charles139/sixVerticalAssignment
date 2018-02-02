@@ -1,0 +1,35 @@
+<div class="row">
+	<div class="col-md-3 col-xs-12">
+		<div class="user-wrapper" *ngFor="let usr of allUsers | filterUsers:userId">
+			<h3>Profile Details</h3>
+			<hr>
+			<h4>{{usr.name}}</h4>
+				<div class="user-info">
+					<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+					<p>{{usr.address.street}}, {{usr.address.suite}}<br/>{{usr.address.city}}, {{usr.address.zip}}</p>
+				</div> 
+				<div class="user-info">
+					<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+					<p>{{usr.phone}}</p>
+				</div> 
+				<div class="user-info">
+					<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+					<p>{{usr.email}}</p>
+				</div> 
+		</div>
+	</div>
+	<div class="col-md-9 col-xs-12">
+		<div class="post-wrapper" *ngFor="let post of allPosts | filterPosts:userId">
+			<div class="post" *ngIf="(post.userId == userId)">
+				<div class="post-title">{{post.title}}</div>
+				<div class="post-body">{{post.body}}</div>
+			</div>
+			<div *ngFor="let comment of allComments">
+				<div class="comment" *ngIf="(comment.postId == post.id)	">
+					<div class="comment-name">{{comment.name}}</div>
+					<div class="comment-body">{{comment.body}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,45 @@
+.user-wrapper {
+    border: solid 2px black;
+    padding: 10px;
+}
+hr {
+    border-color: #000000;
+}
+p {
+	display: inline-block;
+    max-width: 180px;
+    vertical-align: top;
+}
+.glyphicon {
+	font-size: 1.6em;
+	vertical-align: top;
+}
+.post-wrapper {    
+    border: solid 2px #000000;
+}
+.post-wrapper , .user-wrapper {
+    margin-bottom: 2%;
+}
+.post-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+.post-body {
+    padding: 0 0 10px 20px;
+}
+.comment {
+    padding: 10px 20px;
+    color: slategrey;
+}
+ .comment-name {
+    font-size: 14px;
+    font-weight: 600;
+ }
+.comment-body {
+    padding-left: 40px;
+    font-size: 12px;
+}
+.post {
+    border-bottom: solid 2px #000000;
+    padding: 10px;
+}

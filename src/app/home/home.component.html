@@ -1,0 +1,33 @@
+<div class="row titleMargin">
+	<div class="col-xs-12">
+		<h1>{{welcome}}</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-2 col-md-4"></div>
+	<div class="col-xs-8 col-md-4">
+		<p>{{subtitleOne}}</p>
+		<p>{{subtitleTwo}}</p>
+	</div>
+	<div class="col-xs-2 col-md-4"></div>
+</div>
+<div class="row">
+	<div class="col-xs-2 col-md-4"></div>
+	<div class="col-xs-8 col-md-4">
+		<div class="validwrapper" [hidden]="hideErr">	
+			<div *ngIf="!this.canLogin" class="alert alert-danger">
+			  Invalid Email
+			</div>
+			<div *ngIf="this.canLogin" class="alert alert-success">
+			  Login Successful
+			</div>
+		</div>
+		<div class="input-group widthHun">
+			<form [formGroup]="rForm" (ngSubmit)="userLogin(rForm.value)" novalidate>
+				<input type="email" class="form-control" formControlName="email" #input (input)="input.value=$event.target.value.toLowerCase()">
+				<button type="submit" class="btn btn-primary widthHun titleMargin" [disabled]="!rForm.valid">Login</button>
+			</form>
+		</div>
+	</div>
+	<div class="col-xs-2 col-md-4"></div>
+</div>
