@@ -24,7 +24,7 @@
 		</div>
 		<div class="input-group widthHun">
 			<form [formGroup]="rForm" (ngSubmit)="userLogin(rForm.value)" novalidate>
-				<input type="email" class="form-control" formControlName="email" #input (input)="input.value=$event.target.value.toLowerCase()">
+				<input type="email" class="form-control" formControlName="email" placeholder="Email Address" #input (input)="input.value=$event.target.value.toLowerCase()">
 				<button type="submit" class="btn btn-primary widthHun titleMargin" [disabled]="!rForm.valid">Login</button>
 			</form>
 		</div>

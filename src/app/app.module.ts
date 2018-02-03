@@ -19,12 +19,13 @@ const sixVertRoutes: Routes = [
 	},
 	{
 		path: 'profile/:id' ,
-		// canActivate: [ ProfileGuard ],
+		canActivate: [ ProfileGuard ],
 		component: ProfileComponent
 	},
 	{
 		path: '**' ,
-		component: HomeComponent
+		redirectTo: '/',
+		pathMatch: 'full'
 	}
 ];
 

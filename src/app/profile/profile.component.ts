@@ -29,21 +29,21 @@ export class ProfileComponent {
 
 	getAllPosts(): void {
 		this._profileService.getPosts()
-				.subscribe(data => {this.allPosts = data;console.log("These are allPOSTS " , this.allPosts)});
+				.subscribe(data => {this.allPosts = data});
 	}
 	
 	getAllComments(): void {
 		this._profileService.getComments()
-				.subscribe(data => {this.allComments = data;console.log("These are allComments " , this.allComments)});
+				.subscribe(data => {this.allComments = data});
 	}
 
 	getAllUsers() {
 		this._profileService.getUsers()
-				.subscribe(data => {this.allUsers = data;console.log("These are allUsers " , this.allUsers)});
+				.subscribe(data => {this.allUsers = data});
 	}
 	
 	getUserId(){
 		return this._profileService.getUserIdService()
-				.subscribe(data => {this.userId = data;console.log("THIS IS USER ID" , this.userId)});
+				.subscribe(data => {this.userId = data});
 	}
 }

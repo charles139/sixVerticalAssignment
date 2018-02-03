@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { ProfileService }  from './profile/profile.service';
 
 @Component({
   selector: 'my-app',
-  template: '<router-outlet></router-outlet>',
-  providers: [ProfileService]
+  template: '<router-outlet></router-outlet>'
 })
 export class AppComponent  { }

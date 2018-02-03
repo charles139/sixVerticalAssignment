@@ -17,46 +17,45 @@ export class ProfileService {
 
 	constructor(private _http: Http) {
 		this.isUserLoggedIn = false;
-		console.log("NEW INSTANCE OF SERVICE");
 	}
 
-	public loggedInSubject = new BehaviorSubject<boolean>(null);
-	setUserLoggedIn(isLogged) {
+	//BehaviorSubject allows for data sharing between components
+	public loggedInSubject = new BehaviorSubject<any>(null);
+	setUserLoggedIn(isLogged) {//Sets user boolean and broadcasts to Guard
 		this.isUserLoggedIn = isLogged;
-		console.log("Is USER SET TO LOGIN" , this.isUserLoggedIn);
 		return this.loggedInSubject.next([this.isUserLoggedIn]);
 	}
-	getUserLoggedIn():Observable<boolean> {
+	getUserLoggedIn():Observable<any> {//Gets user boolean for Guard
 		return this.loggedInSubject.asObservable();
 	}
 
-	getUsers(): Observable<IUsers[]> {
-		return this._http.get(this.userUrl)
-				.map((data: Response) => {console.log(data);return <IUsers[]>data.json()})
-				.catch(this.processError)
-	}
-
-	getPosts(): Observable<IPosts[]> {
-		return this._http.get(this.postUrl)
-				.map((data: Response) => {console.log("This is POSTS data" , data);return <IPosts[]>data.json()})
-				.catch(this.processError)
-	}
-	
-	getComments(): Observable<IComments[]> {
-		return this._http.get(this.commentUrl)
-				.map((data: Response) => {console.log("This is COMMENTS data" , data);return <IComments[]>data.json()})
-				.catch(this.processError)
-	}
-	
-	private processError(err: Response) {
-		return Observable.throw(err.statusText);
-	}
-
 	public userIdSubject = new BehaviorSubject<number>(null);
-	setUserId(userID){
+	setUserId(userID){//Sets user ID and broadcasts to Service
 		this.userIdSubject.next(userID);
 	}
-	getUserIdService():Observable<number>{
+	getUserIdService():Observable<number>{//Gets user ID for Service
 		return this.userIdSubject.asObservable();
+	}
+
+	getUsers(): Observable<IUsers[]> {//Gets users
+		return this._http.get(this.userUrl)
+				.map((data: Response) => {return <IUsers[]>data.json()})
+				.catch(this.processError)
+	}
+
+	getPosts(): Observable<IPosts[]> {//Gets posts
+		return this._http.get(this.postUrl)
+				.map((data: Response) => {return <IPosts[]>data.json()})
+				.catch(this.processError)
+	}
+	
+	getComments(): Observable<IComments[]> {//Gets comments
+		return this._http.get(this.commentUrl)
+				.map((data: Response) => {return <IComments[]>data.json()})
+				.catch(this.processError)
+	}
+	
+	private processError(err: Response) {//Processes API call err
+		return Observable.throw(err.statusText);
 	}
 }
